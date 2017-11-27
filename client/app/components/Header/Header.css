@@ -51,3 +51,10 @@
   margin:             0px 5px;
 }
   
+.titleName {
+  text-decoration:    none;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  position:           fixed;
+  left:               60px;
+}

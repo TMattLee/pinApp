@@ -11,13 +11,13 @@ import reducers from './reducers/index';
 
 import routes from './routes.js';
 
-const loggerMiddleware = createLogger();
+//const loggerMiddleware = createLogger();
 
 const store = createStore(
   reducers,
   applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    loggerMiddleware // neat middleware that logs actions
+    thunkMiddleware/*, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions*/
 ));
 
 

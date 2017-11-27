@@ -1,0 +1,48 @@
+.dashboardContainer {
+  display:          flex;
+  flex-direction:   column;
+  justify-content:  center;
+  width:            900px;
+  margin:           0px auto 0px auto;
+}
+
+.modalClass {
+  display:            flex;
+  justify-content:    center;
+  align-items:        center;
+  margin:             0px auto 100px auto;
+  overflow:           auto;
+  border-radius:      4px;
+  outline:            none;
+  background-color:   #fff;
+  box-shadow:         0px 0px 5px #333;
+  padding:            20px;
+}
+
+.modalOverlayClass {
+  position:           fixed;
+  top:                0;
+  left:               0;
+  right:              0;
+  bottom:             0;
+  display:            flex;
+  justify-content:    center;
+  align-items:        center;
+  background-color:   rgba(204, 195, 195, 0.70);
+  z-index:            99;
+}
+
+.addImageButton {
+  border:             1px solid grey;
+  width:              100px;
+  border-radius:      4px;
+  margin:             5px 5px 15px 5px;
+  text-align:         center;
+  cursor:             pointer;
+  background-color:   #80f9ff;
+}
+
+.addImageButton:hover {
+  background-color: white;
+  color:            #333;
+}

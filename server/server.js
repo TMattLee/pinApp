@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const axios = require('axios')
 const findOrCreate = require('mongoose-findorcreate');
-const passport = require( './lib/passport.js' );
+const passport = require( './lib/passport/passport.js' );
 
 /*const passport = require("");
 const TwitterStrategy = require('passport-twitter').Strategy;*/
@@ -71,10 +71,6 @@ app.use( passport.session() );
 const routes = require( './routes/routes.js' );
 
 app.use('/', routes );
-  
-app.post('/search/:tags', ( req, res ) => {
-
-});
 
 app.listen(3004, function(){
   console.log("Listening on port ", 3004)

@@ -5,8 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 import styles from './Header.css';
 
-import { loginAction } from '../../actions/index.js';
-import { signOut } from '../../actions/index.js';
+import { authActions } from '../../actions/authActions.js';
 
 
 class Header extends Component {
@@ -20,8 +19,7 @@ class Header extends Component {
   }
   
   doSignout(){
-    const { dispatch } = this.props;
-    dispatch( signOut() );
+    this.props.logout();
   }
   
   render(){
@@ -32,17 +30,26 @@ class Header extends Component {
         <div className={ styles.headerContainer } >
           <div className={ styles.headerContent } >
             <div className={ styles.headerContentLeft } > 
+              <div className={ styles.titleName }> Pin App </div>
               <div className={ styles.tabStyle } > 
                 Welcome, { props.userDisplayName.split(/-|_/).join(' ') } 
               </div>
             </div>
             <div className={ styles.headerContentRight } >
-            
-              <NavLink exact to="/pinterest-app/" 
+              
+              <NavLink exact to="/pinterest-app" 
                 activeStyle={ activeStyle } 
                 className={ styles.tabStyle } >
                 Home
               </NavLink> 
+              
+              <span className={ styles.tabStyle } > | </span>
+            
+              <NavLink exact to="/pinterest-app/dashboard" 
+                activeStyle={ activeStyle } 
+                className={ styles.tabStyle } >
+                Dashboard
+              </NavLink>
                 
               <span className={ styles.tabStyle } > | </span>
               
@@ -57,7 +64,7 @@ class Header extends Component {
       <div className={ styles.headerContainer } >
         <div className={ styles.headerContent } >
           <div className={ styles.headerContentLeft } > 
-            
+            <div className={ styles.titleName }> Pin App </div>
             <div className={ styles.tabStyle }  
               onClick={ this.doRedirect.bind( this ) } >  
               Login With Twitter 
@@ -88,16 +95,15 @@ const activeStyle ={
 
 
 const mapStateToProps = ( state ) => ({
-  isAuthorized:       state.currentState.isAuthorized,
-  done:               state.currentState.done,
-  message:            state.currentState.message,
-  userDisplayName:    state.currentState.userDisplayName,
+  isAuthorized:       state.authState.isAuthorized,
+  done:               state.authState.done,
+  message:            state.authState.message,
+  userDisplayName:    state.authState.userDisplayName,
 });
 
 const mapDispatchToProps = ( dispatch ) => ({
-  loginAction: ( location ) => dispatch( loginAction( location ) ),
-  signOut: () => dispatch( signOut() ),
+  logout: () => dispatch( authActions.logout() ),
 })
 export default connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )( Header );

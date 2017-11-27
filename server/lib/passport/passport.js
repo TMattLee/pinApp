@@ -5,7 +5,7 @@
 
 const passport = require( "passport" );
 const TwitterStrategy = require( 'passport-twitter' ).Strategy;
-const User = require( '../models/user.js' );
+const User = require( '../../models/user.js' );
 
 
 // ------------------------ Twitter Strategy -----------------------------

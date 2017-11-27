@@ -3,7 +3,7 @@ module.exports = {
     if( req.session ){
       req.session.destroy( ( error ) => {
         if ( error ) console.log( error );
-        res.send('SIGNED_OUT');
+        res.redirect( '/pinterest-app' );
       });
     }
   } 

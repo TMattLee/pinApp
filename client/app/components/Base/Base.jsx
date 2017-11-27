@@ -11,18 +11,18 @@ const Base = ( props ) => {
   return(
     <div className={ styles.pageContainer } >
       <Header location={ props.history.location } />
-        
-            { renderRoutes( props.route.routes ) }
-      
+        <div className={ styles.appWindow }>
+          { renderRoutes( props.route.routes ) }
+        </div>
       <Footer />
     </div>
   );
 }
 
 const mapStateToProps = ( state ) => ({
-  isAuthorized:       state.currentState.isAuthorized,
-  done:               state.currentState.done,
-  message:            state.currentState.message,
+  isAuthorized:       state.authState.isAuthorized,
+  done:               state.authState.done,
+  message:            state.authState.message,
 });
 
 export default connect(

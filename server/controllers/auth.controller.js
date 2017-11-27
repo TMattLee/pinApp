@@ -1,27 +1,39 @@
-
 //---------------------------- Auth Router -------------------------------------
+const getUserInfo = require( '../lib/user/getUserInfo.js' );
 
 module.exports = {
+  
   getAuth: ( req, res ) => {
     const auth = req.isAuthenticated();
     if( !auth ){
       res.redirect( '/pinterest-app/auth/twitter' );
     }
     else {
-      res.send({
-        isAuthorized:   auth,
-        userDisplayName:  req.user.twitterHandle,
-      });
+      getUserInfo( req.user.userId )
+      .then( promiseResponse => {
+        let { user, message } = promiseResponse;
+        user.isAuthorized = auth;
+
+        res.send({
+          user: {
+            isAuthorized: auth,
+            userId:         user.userId,
+            twitterHandle:  user.twitterHandle,
+            imageList:  user.imageList,
+          },
+          message:  message
+        });
+      })
+      .catch( error => console.log( error ) );
     }
   },
   
   getAuthTwitter: ( req, res ) => {
-
+    // Initiates login on with twitter
   },
 
   getAuthTwitterCallback: ( req, res ) => {
     // Successful authentication, redirect dashboard.
-    console.log( req.user )
     res.redirect( '/pinterest-app/dashboard' );
   }
 }

@@ -1,5 +1,4 @@
 .imageContainer {
-  text-decoration:        none;
   margin:                 10px;
   border-radius:          10px;
   -moz-border-radius:     10px;
@@ -26,10 +25,6 @@
   background-color: white;
 }
 
-.imageFooterText {
-  margin-right:     10px;
-}
-
 .heartContainer {
   margin-right:     10px;
   color:            #c200ff;
@@ -40,4 +35,13 @@
   margin:           10px auto 10px auto;
   position:         absolute;
   top:              -10px;
+}
+
+.wallContainer {
+  font-Family:      "Fira Sans", Helvetica, Arial, sans-serif;
+  text-transform:   uppercase;
+}
+
+.wallTitle {
+  text-align:       center;
 }
