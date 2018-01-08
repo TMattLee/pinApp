@@ -6,11 +6,9 @@ const Footer = () => {
       <div className = { styles.footer } >
           Built using React by <a href="https://tmattlee.github.io"
           style = { { textDecoration:'none',color: 'orange' } } > Matt Lee </a>
-          <br />
-          Power by Yelp Fusion API
         </div>
         <div className = { styles.footer } >
-          <a href="https://github.com/TMattLee/nightlife-app"
+          <a href="https://github.com/TMattLee/pinterest-app"
           style = { { textDecoration:'none',color: 'orange' } } >
             View Source 
           </a>
