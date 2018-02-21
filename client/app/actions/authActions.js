@@ -143,7 +143,6 @@ export const authActions = {
           dispatch({
             type: LOG_OUT,
           });
-          window.location = '/pinterest-app/';
         })
         .catch( error => {
           console.log( error );

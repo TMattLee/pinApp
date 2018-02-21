@@ -38,23 +38,26 @@ class Header extends Component {
             <div className={ styles.headerContentRight } >
               
               <NavLink exact to="/pinterest-app" 
-                activeStyle={ activeStyle } 
-                className={ styles.tabStyle } >
+                activeStyle={ activeTabStyle }
+                style={ tabStyle } >
                 Home
               </NavLink> 
               
               <span className={ styles.tabStyle } > | </span>
             
               <NavLink exact to="/pinterest-app/dashboard" 
-                activeStyle={ activeStyle } 
-                className={ styles.tabStyle } >
+                activeStyle={ activeTabStyle } 
+                style={ tabStyle } >
                 Dashboard
               </NavLink>
                 
               <span className={ styles.tabStyle } > | </span>
               
-              <div className={ styles.tabStyle } 
-                onClick={ this.doSignout.bind( this ) } >Log Out</div> 
+              <NavLink exact to="/pinterest-app/logout" 
+                activeStyle={ activeTabStyle } 
+                style={ tabStyle } >
+                Log Out
+              </NavLink> 
             </div>
           </div>
         </div>
@@ -75,8 +78,8 @@ class Header extends Component {
           <div className={ styles.headerContentRight }>
             
               <NavLink exact to="/pinterest-app/" 
-                activeStyle={ activeStyle } 
-                className={ styles.tabStyle } >Home</NavLink> 
+                activeStyle={ activeTabStyle } 
+                style={ tabStyle } >Home</NavLink> 
           </div>
         </div>
       </div>
@@ -84,13 +87,23 @@ class Header extends Component {
   }
 };
 
-const activeStyle ={
+const tabStyle ={
   color:              '#222',
   textDecoration:     'none',
   textTransform:      'uppercase',
   margin:             '0px 2px',
   fontFamily:         '"Fira Sans", Helvetica, Arial, sans-serif',
-  borderbottom:       '2px solid #222'
+  cursor:             'pointer',
+}
+
+const activeTabStyle ={
+  color:              '#222',
+  textDecoration:     'none',
+  textTransform:      'uppercase',
+  margin:             '0px 2px',
+  fontFamily:         '"Fira Sans", Helvetica, Arial, sans-serif',
+  borderBottom:       '2px solid #222',
+  cursor:             'pointer',
 }
 
 

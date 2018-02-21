@@ -1,5 +1,5 @@
 import Base from './components/Base/Base.jsx';
-import Logout from './components/Logout/Logout.jsx'
+import Logout from './containers/Logout/Logout.jsx'
 import HomePage from './containers/HomePage/HomePage.jsx';
 import Dashboard from './containers/Dashboard/Dashboard.jsx';
 import Wall from './containers/Wall/Wall.jsx';
@@ -25,6 +25,7 @@ const routes = [
       },
       {
         path: '/pinterest-app/logout',
+        exact: true,
         component: Logout
       },
     ]

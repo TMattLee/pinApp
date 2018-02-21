@@ -38,12 +38,6 @@
   cursor:             pointer;
 }
 
-.fadedTabStyle{
-  color:              #ccc;
-  text-decoration:    none;
-  text-transform:     uppercase;
-  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
-}
 
 .twitterImg{
   width:              14px;
