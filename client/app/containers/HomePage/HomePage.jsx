@@ -33,15 +33,17 @@ const HomePage = ( props ) =>  {
         </div>
       </Link>
     });
-    return <Masonry
-      className={ styles.masonry } // default ''
-      elementType={'div'} // default 'div'
-      options={ masonryOptions } // default {}
-      disableImagesLoaded={ false } // default false
-      updateOnEachImageLoad={ false } // default false and works only if disableImagesLoaded is false
-    >
-      { recents } 
-    </Masonry>
+    return <div><div className={ styles.title } > Recent Images </div>
+      <Masonry
+        className={ styles.masonry } // default ''
+        elementType={'div'} // default 'div'
+        options={ masonryOptions } // default {}
+        disableImagesLoaded={ false } // default false
+        updateOnEachImageLoad={ false } // default false and works only if disableImagesLoaded is false
+      >
+        { recents } 
+      </Masonry>
+    </div>
   }
   return <div>
     Loading...
