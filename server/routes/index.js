@@ -14,7 +14,10 @@ const googleAuthenticationScope = passport.authenticate( 'google', { scope: ['ht
 const googleAuthentication = passport.authenticate( 'google', { failureRedirect: '/pinterest-app/' } )
 
 
-const passportAuthentication = passport.authenticate( ['twitter','google'], { failureRedirect: '/pinterest-app/' } );
+const twitterAuthentication = passport.authenticate( ['twitter','google'], { failureRedirect: '/pinterest-app/' } );
+
+const facebookAuthentication = passport.authenticate( 'facebook', { failureRedirect: '/pinterest-app/' } );
+
 
 router.route( '/' ).get( homeController.home );
 router.route( '/dashboard').get( dashboardController.dashboard );
@@ -23,8 +26,12 @@ router.route( '/wall/:id' ).get( wallController.wall );
 router.route( '/wall/getwallinfo/:userId' ).get( wallController.getWallInfo );
 
 router.route( '/getauth').get( authController.getAuth );
-router.route( '/auth/twitter' ).get( passportAuthentication, authController.getAuthTwitter );
-router.route( '/auth/twitter/callback' ).get( passportAuthentication, authController.getAuthTwitterCallback );
+
+router.route( '/auth/twitter' ).get( twitterAuthentication, authController.getAuthTwitter );
+router.route( '/auth/twitter/callback' ).get( twitterAuthentication, authController.getAuthTwitterCallback );
+
+router.route( '/auth/facebook').get( facebookAuthentication, authController.getAuthFacebook );
+router.route( '/auth/facebook/callback' ).get( facebookAuthentication, authController.getAuthFacebookCallback );
 
 router.get( '/auth/google/', googleAuthenticationScope );
 router.route( '/auth/google/callback' ).get ( googleAuthentication, authController.getAuthGoogleCallback );

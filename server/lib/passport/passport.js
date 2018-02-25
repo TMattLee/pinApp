@@ -6,6 +6,7 @@
 const passport = require( "passport" );
 const TwitterStrategy = require( 'passport-twitter' ).Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const User = require( '../../models/user.js' );
 
 
@@ -42,6 +43,8 @@ const twitterLogin = new TwitterStrategy({
   }
 );
 
+//------------------ Google Strategy ---------------------------------------
+
 const googleLogin = new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -73,9 +76,41 @@ const googleLogin = new GoogleStrategy({
   }
 );
 
+//------------------ Facebook Strategy ---------------------------------------
 
+const facebookLogin = new FacebookStrategy({
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: "https://www.tmattlee.com/pinterest-app/auth/facebook/callback"
+  },
+  ( accessToken, refreshToken, profile, done ) => {
+    User.findOne(
+      { 
+        userId: profile.id 
+      },
+      ( err, user ) => {
+        
+        if ( !user ){
+          let newUser = new User();
+          newUser.userId = profile.id;
+          newUser.imageList = [];
+          newUser.isTwitterVerified = null;
+          newUser.twitterToken =  '';
+          newUser.twitterHandle = profile.id = '10107662402565681' ? 'LW' : profile.displayName;
+          newUser.save( ( error ) => {
+            if ( error ) console.log( error );
+            return done( err, newUser );
+          });
+        }
+        else{
+          return done( err, user );
+        }
+    });
+  }
+);
 passport.use( twitterLogin );
 passport.use( googleLogin );
+passport.use( facebookLogin );
 
 passport.serializeUser( ( user, done ) => {
   done(null, user);

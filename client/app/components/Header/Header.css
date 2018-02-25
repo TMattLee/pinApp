@@ -29,6 +29,15 @@
   display:            flex;
 }
 
+.welcome{
+  color:              #222;
+  text-decoration:    none;
+  text-transform:     uppercase;
+  margin:             0px 2px;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  cursor:             pointer;
+}
+
 .tabStyle{
   color:              #222;
   text-decoration:    none;
@@ -38,6 +47,23 @@
   cursor:             pointer;
 }
 
+.tabStyle:hover {
+  border-bottom:      2px solid black;
+}
+
+
+.loginStyle{
+  color:              #222;
+  text-decoration:    none;
+  text-transform:     uppercase;
+  margin:             0px 2px;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  cursor:             pointer;
+  
+}
+.loginStyle:hover {
+  border-bottom:      2px solid black;
+}
 
 .twitterImg{
   width:              14px;
@@ -50,6 +76,12 @@
   height:             14px;
   margin:             0px 5px;
 }
+
+.facebookImg{
+  width:              14px;
+  height:             14px;
+  margin:             0px 5px;
+}
   
 .titleName {
   text-decoration:    none;
@@ -57,4 +89,14 @@
   font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
   position:           fixed;
   left:               60px;
+}
+
+.headerText{
+  color:              #222;
+  text-decoration:    none;
+  text-transform:     uppercase;
+  margin:             0px 2px;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  cursor:             pointer;
+  margin-right:       10px;
 }
