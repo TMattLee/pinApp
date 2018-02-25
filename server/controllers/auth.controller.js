@@ -44,6 +44,15 @@ module.exports = {
   getAuthGoogleCallback: ( req, res ) => {
     // Successful authentication, redirect dashboard.
     res.redirect( '/pinterest-app/dashboard' );
+  },
+  
+  getAuthFacebook: (req, res ) => {
+    
+  },
+  
+  getAuthFacebookCallback: ( req, res ) => {
+    // Successful authentication, redirect dashboard.
+    res.redirect( '/pinterest-app/dashboard' );
   }
 }
 

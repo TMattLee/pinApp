@@ -15,12 +15,19 @@ class Header extends Component {
       currentDate.setMinutes( currentDate.getMinutes() + 1 ) // expires in one hour
     );
     switch( path ){
+      
       case 'twitter':
         setTimeout( ()=> { window.location.href ="/pinterest-app/auth/twitter" }, 100);
         break;
+        
       case 'google':
         setTimeout( ()=> { window.location.href ="/pinterest-app/auth/google" }, 100);
         break;
+        
+      case 'facebook':
+        setTimeout( ()=> { window.location.href ="/pinterest-app/auth/facebook" }, 100);
+        break;
+        
       default:
         setTimeout( ()=> { window.location.href ="/pinterest-app/none" }, 100);
         break;
@@ -41,7 +48,7 @@ class Header extends Component {
           <div className={ styles.headerContent } >
             <div className={ styles.headerContentLeft } > 
               <div className={ styles.titleName }> Pin App </div>
-              <div className={ styles.tabStyle } > 
+              <div className={ styles.welcome } > 
                 Welcome, { props.userDisplayName.split(/-|_/).join(' ') } 
               </div>
             </div>
@@ -79,18 +86,25 @@ class Header extends Component {
           <div className={ styles.headerContentLeft } > 
             <div className={ styles.titleName }> Pin App </div>
             
+            <div className={ styles.headerText }   >Log in with:</div>
             
-            <div className={ styles.tabStyle }  
+            <div className={ styles.loginStyle }  
               onClick={ this.doRedirect.bind( this, 'twitter' ) } >  
-              Login With Twitter 
+              Twitter 
               <img className={ styles.twitterImg } src="/pinterest-app/dist/assets/images/twitter-64.gif" />
             </div>
             
             
-            <div className={ styles.tabStyle }  
+            <div className={ styles.loginStyle }  
               onClick={ this.doRedirect.bind( this, 'google' ) } >  
-              : Google 
+               Google 
               <img className={ styles.googleImg } src="/pinterest-app/dist/assets/images/gplus.png" />
+            </div>
+            
+            <div className={ styles.loginStyle }  
+              onClick={ this.doRedirect.bind( this, 'facebook' ) } >  
+               facebook
+              <img className={ styles.facebookImg } src="/pinterest-app/dist/assets/images/facebook-50.png" />
             </div>
             
           </div>
