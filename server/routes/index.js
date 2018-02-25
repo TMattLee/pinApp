@@ -9,7 +9,12 @@ const authController = require( '../controllers/auth.controller.js' );
 const loginController = require( '../controllers/login.controller.js' );
 const logoutController = require( '../controllers/logout.controller.js' );
 const imageController = require( '../controllers/image.controller.js' );
-const passportAuthentication = passport.authenticate( 'twitter', { failureRedirect: '/pinterest-app/login' } );
+
+const googleAuthenticationScope = passport.authenticate( 'google', { scope: ['https://www.googleapis.com/auth/plus.login'] } )
+const googleAuthentication = passport.authenticate( 'google', { failureRedirect: '/pinterest-app/' } )
+
+
+const passportAuthentication = passport.authenticate( ['twitter','google'], { failureRedirect: '/pinterest-app/' } );
 
 router.route( '/' ).get( homeController.home );
 router.route( '/dashboard').get( dashboardController.dashboard );
@@ -20,6 +25,9 @@ router.route( '/wall/getwallinfo/:userId' ).get( wallController.getWallInfo );
 router.route( '/getauth').get( authController.getAuth );
 router.route( '/auth/twitter' ).get( passportAuthentication, authController.getAuthTwitter );
 router.route( '/auth/twitter/callback' ).get( passportAuthentication, authController.getAuthTwitterCallback );
+
+router.get( '/auth/google/', googleAuthenticationScope );
+router.route( '/auth/google/callback' ).get ( googleAuthentication, authController.getAuthGoogleCallback );
 
 router.route( '/addimagetouser' ).post( imageController.addImage );
 router.route( '/removeimagefromuser' ).post( imageController.removeImage );
