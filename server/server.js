@@ -68,7 +68,7 @@ app.use( passport.session() );
 //------------------------------------------------------------------------------
 
 
-const routes = require( './routes/routes.js' );
+const routes = require( './routes/index.js' );
 
 app.use('/', routes );
 

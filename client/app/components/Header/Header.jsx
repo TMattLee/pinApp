@@ -9,13 +9,23 @@ import { authActions } from '../../actions/authActions.js';
 
 
 class Header extends Component {
-  doRedirect(){
+  doRedirect( path ){
     let currentDate = new Date();
     let expireDate = new Date(
       currentDate.setMinutes( currentDate.getMinutes() + 1 ) // expires in one hour
     );
-
-    setTimeout( ()=> { window.location.href ="/pinterest-app/auth/twitter" }, 100);
+    switch( path ){
+      case 'twitter':
+        setTimeout( ()=> { window.location.href ="/pinterest-app/auth/twitter" }, 100);
+        break;
+      case 'google':
+        setTimeout( ()=> { window.location.href ="/pinterest-app/auth/google" }, 100);
+        break;
+      default:
+        setTimeout( ()=> { window.location.href ="/pinterest-app/none" }, 100);
+        break;
+    }
+    
   }
   
   doSignout(){
@@ -68,10 +78,19 @@ class Header extends Component {
         <div className={ styles.headerContent } >
           <div className={ styles.headerContentLeft } > 
             <div className={ styles.titleName }> Pin App </div>
+            
+            
             <div className={ styles.tabStyle }  
-              onClick={ this.doRedirect.bind( this ) } >  
+              onClick={ this.doRedirect.bind( this, 'twitter' ) } >  
               Login With Twitter 
               <img className={ styles.twitterImg } src="/pinterest-app/dist/assets/images/twitter-64.gif" />
+            </div>
+            
+            
+            <div className={ styles.tabStyle }  
+              onClick={ this.doRedirect.bind( this, 'google' ) } >  
+              : Google 
+              <img className={ styles.googleImg } src="/pinterest-app/dist/assets/images/gplus.png" />
             </div>
             
           </div>
